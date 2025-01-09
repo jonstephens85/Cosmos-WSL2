@@ -27,10 +27,10 @@ _Skip step 2 if you have 128GB or greater System RAM_
 9. Add this line to the end `/swapfile none swap sw 0 0`
 10. Save and exit (Ctrl+O, Enter, Ctrl+X)
 
+### Install CUDA Toolkit in WSL
+[Follow these directions to install CUDA Toolkit](https://www.youtube.com/watch?v=1HzYU2_t3yc)
 
-
-
-  
+Cosmos works with 11.x and 12.x version. You can follow the video and just use the version you have without modifying to 11.8. Skip the section about installing Pytorch. 
 
 
 
