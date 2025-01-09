@@ -38,7 +38,7 @@ Details of the platform is described in the [Cosmos paper](https://research.nvid
 
 ### Inference
 
-Follow the [Cosmos Installation Guide](INSTALL.md) to setup the docker. For inference with the pretrained models, please refer to [Cosmos Diffusion Inference](cosmos1/models/diffusion/README.md) and [Cosmos Autoregressive Inference](cosmos1/models/autoregressive/README.md).
+Follow the [Cosmos Installation Guide for Windows via WSL2](INSTALL.md) to setup the docker. For inference with the pretrained models, please refer to [Cosmos Diffusion Inference](cosmos1/models/diffusion/README.md) and [Cosmos Autoregressive Inference](cosmos1/models/autoregressive/README.md).
 
 The code snippet below provides a gist of the inference usage.
 
