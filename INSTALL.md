@@ -71,13 +71,14 @@ Update Package Lists: `sudo apt-get update`
 
 ```bash
 sudo apt-get install -y nvidia-container-toolkit
+```
+Restart Docker
+
 sudo nvidia-ctk runtime configure --runtime=docker
 sudo systemctl restart docker
-```
-
+cat /etc/docker/daemon.json
 docker run --rm --gpus all nvidia/cuda:12.0.1-base-ubuntu20.04 nvidia-smi
-
-
+```
 
 
 ## Clone the repository.
