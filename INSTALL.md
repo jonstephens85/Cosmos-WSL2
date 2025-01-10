@@ -67,6 +67,17 @@ curl -s -L https://nvidia.github.io/libnvidia-container/stable/$distribution/lib
   sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
   sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
 ```
+Update Package Lists: `sudo apt-get update`
+
+```bash
+sudo apt-get install -y nvidia-container-toolkit
+sudo nvidia-ctk runtime configure --runtime=docker
+sudo systemctl restart docker
+```
+
+docker run --rm --gpus all nvidia/cuda:12.0.1-base-ubuntu20.04 nvidia-smi
+
+
 
 
 ## Clone the repository.
