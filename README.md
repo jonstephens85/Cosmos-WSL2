@@ -4,6 +4,14 @@
 --------------------------------------------------------------------------------
 ### [Website](https://www.nvidia.com/en-us/ai/cosmos/) | [HuggingFace](https://huggingface.co/collections/nvidia/cosmos-6751e884dc10e013a0a0d8e6) | [GPU-free Preview](https://build.nvidia.com/explore/discover) | [Paper](https://arxiv.org/abs/2501.03575) | [Paper Website](https://research.nvidia.com/labs/dir/cosmos1/)
 
+### Read first
+__This is a forked Windows Installation Tutorial and the main codes will not be updated__
+This forked GitHub project is intented for folks who want to install and generate videos with Cosmos in a Windows native machine. You can also follow the guide and skip the WSL references to run it natively on Linux. As stated above, at the time you are using this forked project, the original Cosmos project may have been updated. Refer to the original project page if parts of this guide are not working. 
+
+The section below is from the original GitHub page. Jump down to [Inference](#inference) to get started. <br>
+<br>
+<br>
+
 [NVIDIA Cosmos](https://www.nvidia.com/cosmos/) is a developer-first world foundation model platform designed to help Physical AI developers build their Physical AI systems better and faster. Cosmos contains
 
 1. pre-trained models, available via [Hugging Face](https://huggingface.co/collections/nvidia/cosmos-6751e884dc10e013a0a0d8e6) under the [NVIDIA Open Model License](https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-open-model-license/) that allows commercial use of the models for free
