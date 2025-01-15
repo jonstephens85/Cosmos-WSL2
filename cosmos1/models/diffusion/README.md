@@ -39,9 +39,23 @@ huggingface-cli login
 
 4. Download the Cosmos model weights from [Hugging Face](https://huggingface.co/collections/nvidia/cosmos-6751e884dc10e013a0a0d8e6):
 
+**ATTENTION: Downloading ALL model checkpoints will take 200GB+ of storage space. Use the correct download link for your system/intended usage**
+
+**Download 7B models for GPUs with ≥24GB VRAM (3090/4090)**
 ```bash
 PYTHONPATH=$(pwd) python cosmos1/scripts/download_diffusion.py --model_sizes 7B 14B --model_types Text2World Video2World
 ```
+
+**Download 14B models for GPUs with ≥48GB VRAM (A6000+)**
+```bash
+PYTHONPATH=$(pwd) python cosmos1/scripts/download_diffusion.py --model_sizes 14B --model_types Text2World Video2World
+```
+
+**Download 7B & 14B models for GPUs with ≥48GB VRAM (A6000+)**
+```bash
+PYTHONPATH=$(pwd) python cosmos1/scripts/download_diffusion.py --model_sizes 7B 14B --model_types Text2World Video2World
+```
+_Note: you can start with 7B and use the 14B script later to pull more checkpoints_
 
 5. The downloaded files should be in the following structure:
 
@@ -76,6 +90,8 @@ checkpoints/
     └── video_content_safety_filter/
 ```
 
+_Note: your structure may be smaller if you did not pull the full 7B and 14B checkpoints_
+
 ## Usage
 
 ### Model Types
@@ -96,9 +112,9 @@ There are two model types available for diffusion world generation:
 
 We support both single and batch video generation.
 
-For generating a single video, `Text2World` mode requires the input argument `--prompt` (text input). `Video2World` mode requires `--input_image_or_video_path` (image/video input). Additionally for Video2World, if the prompt upsampler is disabled, a text prompt must also be provided using the `--prompt` argument.
+**For generating a single video**, `Text2World` mode requires the input argument `--prompt` (text input). `Video2World` mode requires `--input_image_or_video_path` (image/video input). Additionally for Video2World, if the prompt upsampler is disabled, a text prompt must also be provided using the `--prompt` argument.
 
-For generating a batch of videos, both `Text2World` and `Video2World` require `--batch_input_path` (path to a JSONL file). For `Text2World`, the JSONL file should contain one prompt per line in the following format, where each line must contain a "prompt" field:
+**For generating a batch of videos**, both `Text2World` and `Video2World` require `--batch_input_path` (path to a JSONL file). For `Text2World`, the JSONL file should contain one prompt per line in the following format, where each line must contain a "prompt" field:
 
 ```json
 {"prompt": "prompt1"}
