@@ -6,37 +6,50 @@ The original installation assumes you are running a native Linux machine. If you
 ## Install and Configure Ubuntu va WSL2
 The original installation assumes you are running a native Linux machine. If you are planning on running this on a Windows machine, you would need to run Cosmos via an Ubuntu install via WSL2. The following instructions will walk you through how to set that up.
 
-### Create a new WSL 2 instance
+### Step 1: Create a new WSL 2 instance
 _Skip step 1 if you are already running a suppored Ubuntu instance_
 
 1. Open the Microsoft Store and search for **Ubuntu**
 2. Select and download Ubuntu 22.04.x LTS.
 3. Ubuntu will automatically install on your machine.
 
-### Modify WSL2 Swap Memory
+### Step: Modify WSL Instance Memory Access
 _Skip step 2 if you have 128GB or greater System RAM_
 
-Start WSL (select your Ubuntu install from the Start menu)
+By default, WSL only grants access to half of your system's RAM. I have found that it need between 32 and 64GB of RAM to run Cosmos. Therefore, you must modify your WSL configuration to access more memory if you have less than 128GB of system memory. Follow these steps to do so:
+
+**Check current RAM allocation**
+1. Start WSL (select your Ubuntu install from the Start menu)
+2. Check your current ram: `free -h`
+3. Your RAM and Swap memory will display. Swap memory is hard drive storage WSL can use in case system memory runs out. **If you have less than 64GB of RAM and 8GB of Swap, continue on the the next steps.**
+
+**Create config file for WSL**
+1. Navigate to `C:\Users\<YourUsername>\`
+2. If the file `.wslconfig` doesn't exist, create it using Notepad or another text editor.
+3. Open `.wslconfig` in a text editor with Administrator privileges.
+4. Add or modify the config file with these lines:
 ```bash
-sudo swapoff -a
-sudo fallocate -l 64G /swapfile
-sudo chmod 600 /swapfile
-sudo mkswap /swapfile
-sudo swapon /swapfile
+[wsl2]
+swap=64G
+memory=64GB
 ```
+**Restart WSL**
+1. Open PowerShell or Command Prompt as Administrator.
+2. Restart WSL:
+```bash
+wsl --shutdown
+wsl
+```
+**Verify Changes** <br>
+Verify the changes by opening Ubuntu and entering `free -h`. <br>
+You should see `64G` under the Memory and Swap total.
 
-Verify the changes. Enter `free -h` You should see `64G` under the Swap total.
 
-Save this modification permanently. Open the file in the text editor: `sudo nano /etc/fstab`
-
-Add this line to the end `/swapfile none swap sw 0 0`
-
-Save and exit (Ctrl+O, Enter, Ctrl+X)
-
-## Install CUDA Toolkit in WSL
+## Install CUDA Toolkit in WSL (Optional)
+If you plan to use Ubuntu via WSL for future project, I recommend installing CUDA Toolkit.
 [Follow these directions to install CUDA Toolkit](https://www.youtube.com/watch?v=1HzYU2_t3yc)
 
-Cosmos works with 11.x and 12.x version. You can follow the video and just use the version you have without modifying to 11.8. Skip the section about installing Pytorch. 
+I recommend installing 11.8 as most projects I am encountering are built with 11.8 compatibility first.
 
 ## Install Docker
 
@@ -51,6 +64,10 @@ sudo usermod -aG docker $USER
 ```
 
 Log out and back in (or restart your WSL instance) for this change to take effect.
+```bash
+wsl --shutdown
+wsl
+```
 
 Enable and start the Docker service: `sudo service docker start`
 
@@ -92,3 +109,5 @@ docker build -t cosmos .
 docker run -d --name cosmos_container --gpus all --ipc=host -it -v $(pwd):/workspace cosmos
 docker attach cosmos_container
 ```
+
+Congrat! You have installed Cosmos on your machine. Next you must download the model checkpoints before running inference.
