@@ -8,7 +8,7 @@
 __This is a forked Windows Installation Tutorial and the main codes will not be updated__
 This forked GitHub project is intented for folks who want to install and generate videos with Cosmos in a Windows native machine. You can also follow the guide and skip the WSL references to run it natively on Linux. As stated above, at the time you are using this forked project, the original Cosmos project may have been updated. Refer to the original project page if parts of this guide are not working. 
 
-The section below is from the original GitHub page. Jump down to [Inference](#inference) to get started. <br>
+The section below is from the original GitHub page. Jump down to [Installation](#installation) to get started. <br>
 <br>
 <br>
 
@@ -42,11 +42,28 @@ Details of the platform is described in the [Cosmos paper](https://research.nvid
 | [Cosmos-1.0-Autoregressive-13B-Video2World](https://huggingface.co/nvidia/Cosmos-1.0-Autoregressive-13B-Video2World) | Video + Text based future visual world generation | [Inference](cosmos1/models/autoregressive/README.md)   |
 | [Cosmos-1.0-Guardrail](https://huggingface.co/nvidia/Cosmos-1.0-Guardrail) | Guardrail contains pre-Guard and post-Guard for safe use | Embedded in model inference scripts |
 
+## Installation
+The original Cosmos project was intended to be run locally or deployed on a server via a Linux operation system. This guide walks you through the installation of Cosmos on Windows via WSL2. 
+
+### Hardware requirements
+Cosmos requires a recent GPU with at minimum 24 GB of VRAM. To run the 16B models, a minumum of 48 GB of VRAM is needed.
+
+**Supported Hardware Microarchitecture Compatibility:**
+
+- NVIDIA Blackwell
+- NVIDIA Hopper
+- NVIDIA Ampere
+
+**Minimum hardware configuration for 7B: NVIDIA RTX 3090. Recommended 4090 or better** <br>
+**Minimum hardware configuration for 14B: NVIDIA RTX A6000. Recommend RTX 6000 Ada or better**
+
+Follow the [Cosmos Installation Guide for Windows via WSL2](INSTALL.md) to setup the docker.
+
 ## Example Usage
 
 ### Inference
 
-Follow the [Cosmos Installation Guide for Windows via WSL2](INSTALL.md) to setup the docker. For inference with the pretrained models, please refer to [Cosmos Diffusion Inference](cosmos1/models/diffusion/README.md) and [Cosmos Autoregressive Inference](cosmos1/models/autoregressive/README.md).
+For inference with the pretrained models, please refer to [Cosmos Diffusion Inference](cosmos1/models/diffusion/README.md) and [Cosmos Autoregressive Inference](cosmos1/models/autoregressive/README.md).
 
 The code snippet below provides a gist of the inference usage.
 
