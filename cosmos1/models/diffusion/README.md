@@ -184,7 +184,11 @@ PYTHONPATH=$(pwd) python cosmos1/models/diffusion/inference/text2world.py \
     --diffusion_transformer_dir Cosmos-1.0-Diffusion-7B-Text2World \
     --batch_input_path cosmos1/models/diffusion/assets/v1p0/batch_inputs/text2world.jsonl \
     --video_save_folder outputs/Cosmos-1.0-Diffusion-7B-Text2World \
-    --offload_prompt_upsampler
+    --offload_tokenizer \
+    --offload_diffusion_transformer \
+    --offload_text_encoder_model \
+    --offload_prompt_upsampler \
+    --offload_guardrail_models
 ```
 
 ##### Example Output
@@ -287,7 +291,11 @@ PYTHONPATH=$(pwd) python cosmos1/models/diffusion/inference/video2world.py \
     --diffusion_transformer_dir Cosmos-1.0-Diffusion-7B-Video2World \
     --batch_input_path cosmos1/models/diffusion/assets/v1p0/batch_inputs/video2world_ps.jsonl \
     --video_save_folder outputs/Cosmos-1.0-Diffusion-7B-Video2World \
+    --offload_tokenizer \
+    --offload_diffusion_transformer \
+    --offload_text_encoder_model \
     --offload_prompt_upsampler \
+    --offload_guardrail_models
     --num_input_frames 9
 
 # Example using 7B model with 9 input frames without prompt upsampler, using 'prompt' field in the JSONL file
@@ -296,7 +304,11 @@ PYTHONPATH=$(pwd) python cosmos1/models/diffusion/inference/video2world.py \
     --diffusion_transformer_dir Cosmos-1.0-Diffusion-7B-Video2World \
     --batch_input_path cosmos1/models/diffusion/assets/v1p0/batch_inputs/video2world_wo_ps.jsonl \
     --video_save_folder outputs/Cosmos-1.0-Diffusion-7B-Video2World_wo_ps \
-    --disable_prompt_upsampler \
+    --offload_tokenizer \
+    --offload_diffusion_transformer \
+    --offload_text_encoder_model \
+    --offload_prompt_upsampler \
+    --offload_guardrail_models
     --num_input_frames 9
 ```
 
