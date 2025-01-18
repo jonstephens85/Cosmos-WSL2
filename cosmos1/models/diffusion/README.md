@@ -43,7 +43,7 @@ huggingface-cli login
 
 **Download 7B models for GPUs with ≥24GB VRAM (3090/4090)**
 ```bash
-PYTHONPATH=$(pwd) python cosmos1/scripts/download_diffusion.py --model_sizes 7B 14B --model_types Text2World Video2World
+PYTHONPATH=$(pwd) python cosmos1/scripts/download_diffusion.py --model_sizes 7B --model_types Text2World Video2World
 ```
 
 **Download 14B models for GPUs with ≥48GB VRAM (A6000+)**
