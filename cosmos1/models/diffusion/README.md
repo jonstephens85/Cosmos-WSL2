@@ -39,22 +39,14 @@ huggingface-cli login
 
 4. Download the Cosmos model weights from [Hugging Face](https://huggingface.co/collections/nvidia/cosmos-6751e884dc10e013a0a0d8e6):
 
-**ATTENTION: Downloading ALL model checkpoints will take 200GB+ of storage space. Use the correct download link for your system/intended usage**
+**ATTENTION: Downloading ALL model checkpoints will take 200GB+ of storage space. Use the correct download link for your system/intended usage:**
 
-**Download 7B models for GPUs with ≥24GB VRAM (3090/4090)**
-```bash
-PYTHONPATH=$(pwd) python cosmos1/scripts/download_diffusion.py --model_sizes 7B --model_types Text2World Video2World
-```
+| Model Download Option                                       | GPU Requirement          | Command                                                                                  |
+|-------------------------------------------------------------|--------------------------|------------------------------------------------------------------------------------------|
+| Download 7B models                                          | ≥24GB VRAM (3090/4090)   | `PYTHONPATH=$(pwd) python cosmos1/scripts/download_diffusion.py --model_sizes 7B --model_types Text2World Video2World` |
+| Download 14B models                                         | ≥48GB VRAM (A6000+)      | `PYTHONPATH=$(pwd) python cosmos1/scripts/download_diffusion.py --model_sizes 14B --model_types Text2World Video2World` |
+| Download 7B & 14B models                                    | ≥48GB VRAM (A6000+)      | `PYTHONPATH=$(pwd) python cosmos1/scripts/download_diffusion.py --model_sizes 7B 14B --model_types Text2World Video2World` |
 
-**Download 14B models for GPUs with ≥48GB VRAM (A6000+)**
-```bash
-PYTHONPATH=$(pwd) python cosmos1/scripts/download_diffusion.py --model_sizes 14B --model_types Text2World Video2World
-```
-
-**Download 7B & 14B models for GPUs with ≥48GB VRAM (A6000+)**
-```bash
-PYTHONPATH=$(pwd) python cosmos1/scripts/download_diffusion.py --model_sizes 7B 14B --model_types Text2World Video2World
-```
 _Note: you can start with 7B and use the 14B script later to pull more checkpoints_
 
 5. The downloaded files should be in the following structure:
